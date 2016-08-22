@@ -31,8 +31,8 @@
 *.out
 *.app
 
-#*.vscode/.browse.VC.db
-*.json
+#.vscode/*
 *.db
 *.db-shm
+*.json
 build

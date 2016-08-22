@@ -92,13 +92,13 @@ namespace summer
 
             void DisableReading()
             {
-                events_ &= ~WriteEvent;
+                events_ &= ~ReadEvent;
                 Update();
             }
 
             void DisableWriting()
             {
-                events_ &= ~ReadEvent;
+                events_ &= ~WriteEvent;
                 Update();
             }
 
