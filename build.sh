@@ -1,0 +1,21 @@
+#!/bin/sh
+set -x
+
+BUILD_EXAMPLE=1
+BUILD_TYPE=debug
+
+SOURCE_DIR=$(pwd)
+BUILD_DIR=${BUILD_DIR:-./build}
+BUILD_TYPE=${BUILD_TYPE:-release}
+BUILD_EXAMPLE=${BUILD_EXAMPLE:-0}
+INSTALL_DIR=${INSTALL_DIR:-./${BUILD_TYPE}-install}
+
+#rm -rf $BUILD_DIR/$BUILD_TYPE
+mkdir -p $BUILD_DIR/$BUILD_TYPE \
+    && cd $BUILD_DIR/$BUILD_TYPE \
+    && cmake \
+        -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+        -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
+        -DCMAKE_BUILD_EXAMPLE=$BUILD_EXAMPLE \
+        $SOURCE_DIR \
+    && make $* VERBOSE=1
